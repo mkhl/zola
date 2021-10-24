@@ -65,6 +65,10 @@ pub fn build_cli() -> App<'static, 'static> {
                         .long("port")
                         .takes_value(true)
                         .help("Which port to use (default: 1111)"),
+                    Arg::with_name("ws_port")
+                        .long("livereload-port")
+                        .takes_value(true)
+                        .help("Which port to use for livereload (default: automatic)"),
                     Arg::with_name("output_dir")
                         .short("o")
                         .long("output-dir")

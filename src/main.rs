@@ -63,6 +63,13 @@ fn main() {
                     ::std::process::exit(1);
                 }
             };
+            let ws_port: Option<u16> = matches.value_of("ws_port").map(|s| match s.parse() {
+                Ok(x) => x,
+                Err(_) => {
+                    console::error("The livereload port needs to be an integer");
+                    ::std::process::exit(1);
+                }
+            });
             let open = matches.is_present("open");
             let include_drafts = matches.is_present("drafts");
             let fast = matches.is_present("fast");
@@ -93,6 +100,7 @@ fn main() {
                 &config_file,
                 open,
                 include_drafts,
+                ws_port,
                 fast,
             ) {
                 Ok(()) => (),

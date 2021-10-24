@@ -277,6 +277,7 @@ pub fn serve(
     config_file: &Path,
     open: bool,
     include_drafts: bool,
+    ws_port: Option<u16>,
     fast_rebuild: bool,
 ) -> Result<()> {
     let start = Instant::now();
@@ -288,7 +289,7 @@ pub fn serve(
         base_url,
         config_file,
         include_drafts,
-        None,
+        ws_port,
     )?;
     console::report_elapsed_time(start);
 
